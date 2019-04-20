@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "57b5e7ef282b4d3e02bff96bb72950e96fb52f67f8623c6e4197baee3be26b44"
+            "sha256": "42e30555d2f2dc0c87305398bb3903a2ab1d80270d84f9e9b39adc33286cd066"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -149,6 +149,22 @@
             ],
             "version": "==0.2.4"
         },
+        "pynput": {
+            "hashes": [
+                "sha256:6afd47beb438cdc9fa250647b2abd6786b7ef2c7bf9b1ff1e3b7cbb797fa6d7a",
+                "sha256:92fdd578407433219e63626fb4f1b415b54de5a9b0a2a8fddcb62b690c37a7b6"
+            ],
+            "index": "pypi",
+            "version": "==1.4.2"
+        },
+        "python-xlib": {
+            "hashes": [
+                "sha256:204f280b549352af6cbdaff43405186822ae05749518dd9be209bd88a0088f99",
+                "sha256:cdc806892f28fcd2c52e22a646c2ae3af3f0539cbbacfe7b344231d75eb96095"
+            ],
+            "markers": "'linux' in sys_platform",
+            "version": "==0.25"
+        },
         "pytz": {
             "hashes": [
                 "sha256:303879e36b721603cc54604edcac9d20401bdbe31e1e4fdee5b9f98d5d31dfda",
@@ -192,14 +208,6 @@
                 "sha256:b65db1bbaac9f9f4d190199bb8680af6f6f84fd3769a5ea883df8a91fe68b4c4"
             ],
             "version": "==2.2.5"
-        },
-        "colorama": {
-            "hashes": [
-                "sha256:05eed71e2e327246ad6b38c540c4a3117230b19679b875190486ddd2d721422d",
-                "sha256:f8ac84de7840f5b9c4e3347b3c1eaa50f7e49c2b07596221daec5edaabbd7c48"
-            ],
-            "markers": "sys_platform == 'win32'",
-            "version": "==0.4.1"
         },
         "isort": {
             "hashes": [

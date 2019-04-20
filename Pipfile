@@ -9,6 +9,7 @@ pylint = "*"
 
 [packages]
 google-cloud-speech = "*"
+pynput = "*"
 
 [requires]
 python_version = "3.7"
