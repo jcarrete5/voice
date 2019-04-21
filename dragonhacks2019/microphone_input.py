@@ -11,10 +11,8 @@ class MicrophoneInput:
         self.CHANNELS = 1
         self.RATE = 16000
         self.CHUNK = int(self.RATE / 10)
-
         self._mic: pyaudio.PyAudio = None
         self._stream: pyaudio.Stream = None
-
         self._buf = queue.Queue()
         self.closed = True
 
@@ -26,7 +24,6 @@ class MicrophoneInput:
                                       input=True,
                                       frames_per_buffer=self.CHUNK,
                                       stream_callback=self._fill_buf)
-
         self.closed = False
         return self
 
@@ -37,7 +34,6 @@ class MicrophoneInput:
         self._stream.stop_stream()
         self._stream.close()
         self.closed = True
-
         self._buf.put(None)
         self._mic.terminate()
 
@@ -56,7 +52,6 @@ class MicrophoneInput:
             # chunk is None if stream has ended
             if chunk is None:
                 return
-
             data = [chunk]
             while True:
                 try:
@@ -66,5 +61,4 @@ class MicrophoneInput:
                     data.append(chunk)
                 except queue.Empty:
                     break
-
             yield b''.join(data)
