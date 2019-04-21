@@ -31,12 +31,16 @@ class MicrophoneInput:
         return self
 
     def __exit__(self, type, value, traceback):
+        self.close()
+
+    def close():
         self._stream.stop_stream()
         self._stream.close()
         self.closed = True
 
         self._buf.put(None)
         self._mic.terminate()
+
 
     def _fill_buf(self, in_data, frame_count, time_info, status_flags):
         self._buf.put(in_data)
