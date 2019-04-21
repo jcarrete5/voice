@@ -106,3 +106,7 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+
+# credentials
+dragonhacks2019/credentials/dragon_hacks_2019.json
