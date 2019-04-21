@@ -1,5 +1,4 @@
 import sys
-import pathlib
 import os
 import action
 from argparse import ArgumentParser
