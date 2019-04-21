@@ -1,28 +1,26 @@
-from pynput.keyboard import Key,  Controller
+from pynput.keyboard import Key, KeyCode, Controller
 
 
 import time
 
-keyboard = Controller()
+actionProcessor= Controller()
+
+# input string and breaks up into array of strings to get keyboard action
+def action(commandStrings):
+    command=commandStrings.split('+')
+
+    for instruction in command:
+        actionProcessor.press(getattr(Key, instruction, KeyCode.from_char(instruction)))
+    for instruction in command:
+        actionProcessor.release(getattr(Key, instruction, KeyCode.from_char(instruction)))
+
+next= 'right'
+back= 'left'
+a= 'shift+a'
 
 
-def action(command):
 
-
-
-def forward():
-    keyboard.press(Key.right)
-    keyboard.release(getattr(Key, 'right'))
-
-def backward():
-    keyboard.press(Key.left)
-    keyboard.release(Key.left)
-
-
-
-def main():
-    time.sleep(10)
-    forward()
+if __name__ == '__main__':
     time.sleep(5)
-    backward()
-main()
+    action(a)
+
