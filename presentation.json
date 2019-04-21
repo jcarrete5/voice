@@ -1,0 +1,24 @@
+{
+	"scopes": [
+		{
+      "voice command system": ["right", "##next_scope"]
+		},
+		{
+      "we've all been there": ["right", "##delay,3000", "##next_scope"]
+    },
+    {
+      "called dragon voice": ["right", "##next_scope"]
+    },
+    {
+      "may have noticed": ["right", "##next_scope"]
+    },
+    {
+      "we": ["right"],
+      "are": ["right"],
+      "using": ["right"],
+      "it": ["right"],
+      "right": ["right"],
+      "now": ["right"]
+    }
+	]
+}
