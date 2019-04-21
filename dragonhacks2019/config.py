@@ -45,6 +45,9 @@ class Config:
         """
         return set(phrase for phrase in self._current_scope.keys())
 
+    def __repr__(self):
+        return str(self._scopes)
+
 
 if __name__ == '__main__':
     cfg = Config('test_format.json')
