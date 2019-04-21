@@ -1,6 +1,7 @@
 from google.cloud.speech_v1 import SpeechClient
 from google.cloud.speech_v1 import enums
 from google.cloud.speech_v1 import types
+from google.api_core.exceptions import OutOfRange
 import pyaudio
 import pathlib
 
@@ -29,47 +30,50 @@ class SpeechToTextClient:
         Args:
             callback (function): Function that is called when text is transcribed from speech
         """
-        with MicrophoneInput() as mic:
-            print("Starting SpeechToTextClient")
-            self._mic = mic
-            audio_generator = self._mic.generator()
+        try:
+            with MicrophoneInput() as mic:
+                print("Starting SpeechToTextClient")
+                self._mic = mic
+                audio_generator = self._mic.generator()
 
-            config = types.RecognitionConfig(
-                    encoding=enums.RecognitionConfig.AudioEncoding.LINEAR16,
-                    sample_rate_hertz=self._mic.RATE,
-                    language_code=self.language_code,
-                    use_enhanced=True,
-                    speech_contexts=self.speech_context
-            )
+                config = types.RecognitionConfig(
+                        encoding=enums.RecognitionConfig.AudioEncoding.LINEAR16,
+                        sample_rate_hertz=self._mic.RATE,
+                        language_code=self.language_code,
+                        use_enhanced=True,
+                        speech_contexts=self.speech_context
+                )
 
-            streaming_config = types.StreamingRecognitionConfig(config=config,
-                                                                interim_results=True)
+                streaming_config = types.StreamingRecognitionConfig(config=config,
+                                                                    interim_results=True)
 
-            requests = (types.StreamingRecognizeRequest(audio_content=content) for content in audio_generator)
-            responses = self.client.streaming_recognize(streaming_config, requests)
+                requests = (types.StreamingRecognizeRequest(audio_content=content) for content in audio_generator)
+                responses = self.client.streaming_recognize(streaming_config, requests)
 
-            for response in responses:
-                if not response.results: # no results
-                    continue
+                for response in responses:
+                    if not response.results: # no results
+                        continue
 
-                # first result is best result
-                result = response.results[0]
-                if not result.alternatives:
-                    continue
+                    # first result is best result
+                    result = response.results[0]
+                    if not result.alternatives:
+                        continue
 
-                transcript = result.alternatives[0].transcript.strip()
-                callback((transcript, result.is_final))
+                    transcript = result.alternatives[0].transcript.strip()
+                    callback((transcript, result.is_final))
+        except OutOfRange:
+            self.restart(callback)
 
-    def close(self):
+    def stop(self):
         print("Stopping SpeechToTextClient")
         if self._mic is None or self._mic.closed:
             return
 
         self._mic.close()
 
-    def restart(self):
+    def restart(self, callback):
         self.stop()
-        self.start()
+        self.start(callback)
 
     def update_phrase_hints(self, phrase_hints):
         self.phrase_hints = phrase_hints
