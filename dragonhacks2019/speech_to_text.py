@@ -39,8 +39,7 @@ class SpeechToTextClient:
                         use_enhanced=True,
                         speech_contexts=self.speech_context
                 )
-                streaming_config = types.StreamingRecognitionConfig(config=config,
-                                                                    interim_results=True)
+                streaming_config = types.StreamingRecognitionConfig(config=config, interim_results=True)
                 requests = (types.StreamingRecognizeRequest(audio_content=content) for content in audio_generator)
                 responses = self.client.streaming_recognize(streaming_config, requests)
                 for response in responses:
