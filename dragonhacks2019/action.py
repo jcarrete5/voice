@@ -26,7 +26,7 @@ def do_action(action: str, cfg: Config = None) -> bool:
         for token in reversed(tokens):
             controller.release(getattr(Key, token, KeyCode.from_char(token)))
     return False
-j
+
 
 def do_meta_action(meta_action: str, cfg: Config):
     if meta_action == '##next_scope':

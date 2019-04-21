@@ -1,8 +1,8 @@
+import pyaudio
 from google.cloud.speech_v1 import SpeechClient
 from google.cloud.speech_v1 import enums
 from google.cloud.speech_v1 import types
 from google.api_core.exceptions import OutOfRange
-import pyaudio
 
 from microphone_input import MicrophoneInput
 
