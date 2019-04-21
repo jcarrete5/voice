@@ -20,7 +20,7 @@ def do_action(action: str, cfg: Config = None):
         tokens = action.split('+')
         for token in tokens:
             controller.press(getattr(Key, token, KeyCode.from_char(token)))
-        for token in tokens:
+        for token in reversed(tokens):
             controller.release(getattr(Key, token, KeyCode.from_char(token)))
 
 
