@@ -1,13 +1,13 @@
 {
 	"scopes": [
 		{
-			"forward": ["right"],
+			"forward": ["right", "left"],
       "back": ["left"],
-      "next set": ["##next"]
+      "next set": ["##next_scope"]
 		},
 		{
       "press j": ["j"],
-      "previous set": ["##prev"]
+      "previous set": ["##prev_scope"]
 		}
 	]
 }
