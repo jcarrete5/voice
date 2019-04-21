@@ -3,6 +3,7 @@
 		{
 			"forward": ["right", "left"],
       "back": ["left"],
+      "print a": ["a"],
       "next set": ["##next_scope"]
 		},
 		{

@@ -38,6 +38,7 @@ class Config:
         """
         return self._current_scope.get(phrase, [])
 
+
     def phrases(self) -> set:
         """
         Return the possible phrases that can be said in the current
