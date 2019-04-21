@@ -5,8 +5,6 @@ import pyaudio
 import pathlib
 
 from microphone_input import MicrophoneInput
-#  pathlib.Path(__file__).parent / \
-#                         'credentials/dragon_hacks_2019.json'
 
 
 class SpeechToText:
