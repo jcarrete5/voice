@@ -3,7 +3,6 @@ from google.cloud.speech_v1 import enums
 from google.cloud.speech_v1 import types
 from google.api_core.exceptions import OutOfRange
 import pyaudio
-import pathlib
 
 from microphone_input import MicrophoneInput
 
