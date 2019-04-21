@@ -76,7 +76,7 @@ class SpeechToTextClient:
         self.start(callback)
 
     def update_phrase_hints(self, phrase_hints):
-        self.phrase_hints = phrase_hints
+        self.phrase_hints = [types.SpeechContext(phrases=phrase_hints)]
 
 
 if __name__ == "__main__":
