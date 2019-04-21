@@ -6,13 +6,24 @@ import pathlib
 
 from microphone_input import MicrophoneInput
 
-
 class SpeechToTextClient:
+    """
+    A speech to text client that parses microphone input into text.
+    """
     def __init__(self, credentials_path, language_code):
+        """
+        Args:
+            credentials_path (str): The path to the service account private key json file.
+            language_code (str): The language of the supplied audio as a BCP-47 language tag. Example: “en-US”.
+        """
         self.language_code = language_code
         self.client = SpeechClient().from_service_account_json(credentials_path)
 
     def start(self, callback):
+        """
+        Args:
+            callback (function): Function that is called when text is transcribed from speech
+        """
         with MicrophoneInput() as mic:
             audio_generator = mic.generator()
 

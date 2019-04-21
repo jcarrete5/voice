@@ -3,6 +3,9 @@ import queue
 
 
 class MicrophoneInput:
+    """
+    Helper class to put microphone input into a generator.
+    """
     def __init__(self):
         self.FORMAT = pyaudio.paInt16
         self.CHANNELS = 1
@@ -40,6 +43,9 @@ class MicrophoneInput:
         return None, pyaudio.paContinue
 
     def generator(self):
+        """
+        Returns: generator that gets filled with microphone data.
+        """
         while not self.closed:
             # use blocking queue
             chunk = self._buf.get()
