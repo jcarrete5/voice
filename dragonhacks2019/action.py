@@ -47,6 +47,12 @@ def do_meta_action(meta_action: str, cfg: Config):
         return cfg.next_scope()
     elif meta_action == '##prev_scope':
         return cfg.prev_scope()
+    elif meta_action.startswith('##delay'):
+        ms = int(meta_action.split(',')[1])
+        time.sleep(ms / 1000)
+    elif meta_action.startswith('##print'):
+        s = meta_action.split(',')[1]
+        print(s)
     else:
         raise RuntimeError(f'Invalid meta action: {meta_action}')
 

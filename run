@@ -3,4 +3,4 @@
 # **** THIS FILE MUST BE RUN FROM THIS PROJECTS ROOT ****
 
 export GOOGLE_APPLICATION_CREDENTIALS="$(pwd)/secret.json"
-pipenv run python dragonhacks2019/ -c 'test_format.json'
+pipenv run python dragonhacks2019/ -c "$1"
