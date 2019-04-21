@@ -1,9 +1,10 @@
 import time
 from pynput.keyboard import Key, KeyCode, Controller
+import pynput.mouse as ms
 from config import Config
 
 controller = Controller()
-
+mouse = ms.Controller()
 
 def do_actions(*actions: list, cfg: Config = None):
     """
@@ -22,7 +23,20 @@ def do_action(action: str, cfg: Config = None) -> bool:
     else:
         tokens = action.split('+')
         for token in tokens:
-            controller.press(getattr(Key, token, KeyCode.from_char(token)))
+            if (token.startswith("mouse")):
+                mouse_cmd: str = token.split('.')[1]
+                tokens.remove(token)
+
+                if mouse_cmd.startswith("move"):
+                    coords = mouse_cmd.replace("move(", "").replace(")", "").split(',')
+                    mouse.move(0, 0)
+                    mouse.move(int(coords[0]), int(coords[1]))
+                elif mouse_cmd == "rclick":
+                    mouse.click(ms.Button.right, 1)
+                elif mouse_cmd == "lclick":
+                    mouse.click(ms.Button.left, 1)
+            else:
+                controller.press(getattr(Key, token, KeyCode.from_char(token)))
         for token in reversed(tokens):
             controller.release(getattr(Key, token, KeyCode.from_char(token)))
     return False

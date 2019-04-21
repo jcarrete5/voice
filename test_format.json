@@ -2,14 +2,15 @@
 	"scopes": [
 		{
 			"forward": ["right", "left"],
-      "back": ["left"],
-      "print a": ["a"],
-      "double": ["y", "s"],
-      "next set": ["##next_scope", "j"]
+			"back": ["left"],
+			"print a": ["a"],
+			"double": ["y", "s"],
+			"move mouse": ["mouse.move(0,300)", "mouse.lclick"],
+			"next set": ["##next_scope", "j"]
 		},
 		{
-      "press j": ["j"],
-      "previous set": ["##prev_scope"]
+			"press j": ["j"],
+			"previous set": ["##prev_scope"]
 		}
 	]
 }
