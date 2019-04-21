@@ -8,9 +8,9 @@ from microphone_input import MicrophoneInput
 
 
 class SpeechToText:
-    def __init__(self, service_path, language_code):
+    def __init__(self, service_credentials_path, language_code):
         self.language_code = language_code
-        self.client = SpeechClient().from_service_account_json(self.service_path)
+        self.client = SpeechClient().from_service_account_json(service_credentials_path)
 
     def start_listen(self, callback):
         with MicrophoneInput() as mic:
