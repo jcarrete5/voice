@@ -7,14 +7,14 @@
       "been there": ["right", "##delay,0", "##next_scope"]
     },
     {
-      "dragon voice": ["right", "##next_scope"]
+      "voice": ["right", "##next_scope"]
     },
     {
       "platform": ["mouse.lclick"],
       "perform": ["mouse.lclick"],
       "control": ["mouse.lclick"],
       "mouse": ["mouse.lclick"],
-      "have noticed": ["right", "##next_scope"]
+      "noticed": ["right", "##next_scope"]
     },
     {
       "we": ["right"],
