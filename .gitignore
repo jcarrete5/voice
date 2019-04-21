@@ -114,3 +114,4 @@ venv.bak/
 # credentials
 dragonhacks2019/credentials/dragon_hacks_2019.json
 Pipfile.lock
+secret.json
