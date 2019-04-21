@@ -62,3 +62,10 @@ class MicrophoneInput:
                 except queue.Empty:
                     break
             yield b''.join(data)
+
+
+if __name__ == '__main__':
+    with MicrophoneInput() as mic:
+        for chunk in mic.generator():
+            print("Chunk")
+            print(chunk)
