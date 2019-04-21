@@ -1,0 +1,11 @@
+{
+  "scopes": [
+    {
+      "editor": [
+        "cmd+space", "##delay,200", "t", "e", "r", "##delay,200", "enter",
+        "##delay,200", "v", "i", "m", "enter"
+      ],
+      "quit": ["esc", "shift+;", "q", "enter", "##delay,200", "ctrl+d"]
+    }
+  ]
+}
