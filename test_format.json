@@ -2,14 +2,15 @@
 	"scopes": [
 		{
 			"forward": ["right", "left"],
-      "back": ["left"],
-      "print a": ["a"],
-      "double": ["y", "s"],
-      "next set": ["##next_scope", "j"]
+			"back": ["left"],
+			"print a": ["a"],
+			"double": ["y", "s"],
+			"powerpoint": ["mouse.move(440,1070)", "mouse.lclick", "##delay,2000", "f5"],
+			"next set": ["##next_scope", "j"]
 		},
 		{
-      "press j": ["j"],
-      "previous set": ["##prev_scope"]
+			"press j": ["j"],
+			"previous set": ["##prev_scope"]
 		}
 	]
 }
