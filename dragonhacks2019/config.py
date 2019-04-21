@@ -53,5 +53,6 @@ if __name__ == '__main__':
     assert cfg.prev_scope()
     assert not cfg.prev_scope()
     assert {'forward', 'back', 'next set'} == cfg.phrases()
-    assert {'right'} == cfg.actions('forward')
+    assert ['right'] == cfg.actions('forward')
+
     print("Passed")
