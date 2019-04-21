@@ -4,7 +4,8 @@
 			"forward": ["right", "left"],
       "back": ["left"],
       "print a": ["a"],
-      "next set": ["##next_scope"]
+      "double": ["y", "s"],
+      "next set": ["##next_scope", "j"]
 		},
 		{
       "press j": ["j"],

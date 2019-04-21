@@ -9,20 +9,24 @@ def do_actions(*actions: list, cfg: Config = None):
     """
     Perform actions from actions list in sequence
     """
+    is_meta = False
     for action in actions:
-        do_action(action, cfg)
+        is_meta = any((do_action(action, cfg), is_meta))
+    return is_meta
 
 
-def do_action(action: str, cfg: Config = None):
+def do_action(action: str, cfg: Config = None) -> bool:
     if action.startswith('##'):
         do_meta_action(action, cfg)
+        return True
     else:
         tokens = action.split('+')
         for token in tokens:
             controller.press(getattr(Key, token, KeyCode.from_char(token)))
         for token in reversed(tokens):
             controller.release(getattr(Key, token, KeyCode.from_char(token)))
-
+    return False
+j
 
 def do_meta_action(meta_action: str, cfg: Config):
     if meta_action == '##next_scope':
