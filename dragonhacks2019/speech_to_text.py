@@ -18,10 +18,8 @@ class SpeechToTextClient:
             phrase_hints (str[]): https://cloud.google.com/speech-to-text/docs/basics#phrase-hints
         """
         self.language_code = language_code
-
         self.client = SpeechClient().from_service_account_json(credentials_path)
         self.speech_context = [types.SpeechContext(phrases=phrase_hints)]
-
         self._mic: MicrophoneInput = None
 
     def start(self, callback):
@@ -34,7 +32,6 @@ class SpeechToTextClient:
                 print("Starting SpeechToTextClient")
                 self._mic = mic
                 audio_generator = self._mic.generator()
-
                 config = types.RecognitionConfig(
                         encoding=enums.RecognitionConfig.AudioEncoding.LINEAR16,
                         sample_rate_hertz=self._mic.RATE,
@@ -42,22 +39,17 @@ class SpeechToTextClient:
                         use_enhanced=True,
                         speech_contexts=self.speech_context
                 )
-
                 streaming_config = types.StreamingRecognitionConfig(config=config,
                                                                     interim_results=True)
-
                 requests = (types.StreamingRecognizeRequest(audio_content=content) for content in audio_generator)
                 responses = self.client.streaming_recognize(streaming_config, requests)
-
                 for response in responses:
                     if not response.results: # no results
                         continue
-
                     # first result is best result
                     result = response.results[0]
                     if not result.alternatives:
                         continue
-
                     transcript = result.alternatives[0].transcript.strip().lower()
                     callback((transcript, result.is_final))
         except OutOfRange:
@@ -67,7 +59,6 @@ class SpeechToTextClient:
         print("Stopping SpeechToTextClient")
         if self._mic is None or self._mic.closed:
             return
-
         self._mic.close()
 
     def restart(self, callback):
@@ -81,12 +72,9 @@ class SpeechToTextClient:
 if __name__ == "__main__":
     import os
     import time
-
     cred_path = os.path.abspath("secret.json")
-
     def callback(text):
         print(text)
-
     client = SpeechToTextClient(cred_path, "en-US")
     client.start(callback)
     time.sleep(2)
