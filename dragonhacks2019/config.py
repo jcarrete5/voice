@@ -46,5 +46,12 @@ class Config:
         return set(phrase for phrase in self._current_scope.keys())
 
 
-state = Config('format.json')
-print(state.phrases())
+if __name__ == '__main__':
+    cfg = Config('test_format.json')
+    assert cfg.next_scope()
+    assert not cfg.next_scope()
+    assert cfg.prev_scope()
+    assert not cfg.prev_scope()
+    assert {'forward', 'back', 'next set'} == cfg.phrases()
+    assert {'right'} == cfg.actions('forward')
+    print("Passed")
