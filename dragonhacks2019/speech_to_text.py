@@ -59,8 +59,7 @@ class SpeechToTextClient:
                     continue
 
                 transcript = result.alternatives[0].transcript.strip()
-                print (response)
-                callback(transcript)
+                callback((transcript, result.is_final))
 
     def close(self):
         print("Stopping SpeechToTextClient")
@@ -68,7 +67,6 @@ class SpeechToTextClient:
             return
 
         self._mic.close()
-
 
     def restart(self):
         self.stop()
