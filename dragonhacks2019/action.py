@@ -19,9 +19,9 @@ def do_action(action: str, cfg: Config = None):
     else:
         tokens = action.split('+')
         for token in tokens:
-            controller.press(getattr(Key, action, KeyCode.from_char(token)))
+            controller.press(getattr(Key, token, KeyCode.from_char(token)))
         for token in tokens:
-            controller.release(getattr(Key, action, KeyCode.from_char(token)))
+            controller.release(getattr(Key, token, KeyCode.from_char(token)))
 
 
 def do_meta_action(meta_action: str, cfg: Config):
