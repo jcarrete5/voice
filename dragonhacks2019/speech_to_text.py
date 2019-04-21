@@ -59,7 +59,7 @@ class SpeechToTextClient:
                     if not result.alternatives:
                         continue
 
-                    transcript = result.alternatives[0].transcript.strip()
+                    transcript = result.alternatives[0].transcript.strip().lower()
                     callback((transcript, result.is_final))
         except OutOfRange:
             self.restart(callback)
