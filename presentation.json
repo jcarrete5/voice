@@ -1,16 +1,20 @@
 {
 	"scopes": [
 		{
-      "voice command system": ["right", "##next_scope"]
+      "command system": ["right", "##next_scope"]
 		},
 		{
-      "we've all been there": ["right", "##delay,3000", "##next_scope"]
+      "been there": ["right", "##delay,0", "##next_scope"]
     },
     {
-      "called dragon voice": ["right", "##next_scope"]
+      "dragon voice": ["right", "##next_scope"]
     },
     {
-      "may have noticed": ["right", "##next_scope"]
+      "platform": ["mouse.lclick"],
+      "perform": ["mouse.lclick"],
+      "control": ["mouse.lclick"],
+      "mouse": ["mouse.lclick"],
+      "have noticed": ["right", "##next_scope"]
     },
     {
       "we": ["right"],
@@ -23,7 +27,7 @@
     {
 			"previous": ["left"],
 			"end": ["right"],
-			"powerpoint": ["mouse.move(340,1070)", "mouse.lclick", "##delay,100", "f5"]
+			"powerpoint": ["esc", "##delay,500", "mouse.move(340,1070)", "mouse.lclick", "##delay,100", "f5"]
 		}
 	]
 }
